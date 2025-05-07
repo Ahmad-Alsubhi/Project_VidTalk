@@ -16,10 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const userMessage = document.getElementById('userMessage');
     const startVoiceBtn = document.getElementById('startVoiceBtn');
 
-// تأكد من دعم المتصفح للـ Web Speech API
 if ('webkitSpeechRecognition' in window) {
     const recognition = new webkitSpeechRecognition();
-    recognition.lang = 'en-US'; // اللغة العربية - تقدر تغيرها حسب الحاجة
+    recognition.lang = 'en-US'; 
     recognition.continuous = false;
     recognition.interimResults = false;
 
@@ -29,14 +28,14 @@ if ('webkitSpeechRecognition' in window) {
 
     recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        userMessage.value = transcript; // حط النص في خانة الإدخال
+        userMessage.value = transcript; 
     };
 
     recognition.onerror = (event) => {
-        console.error('حدث خطأ في التعرف على الصوت:', event.error);
+        console.error('Voice recognition error occurred:', event.error);
     };
 } else {
-    alert('المتصفح لا يدعم التعرف على الصوت');
+    alert('The browser does not support voice recognition.');
 }
 
 
@@ -194,7 +193,7 @@ if ('webkitSpeechRecognition' in window) {
 
         let displayText = text;
 
-        // regex يلتقط أي رابط داخل الجملة
+        
         const urlRegex = /(https?:\/\/[^\s]+)/g;
 
         if (sender === 'bot') {
